@@ -17,19 +17,39 @@
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
     	
-    	<input type="text" name="X19" placeholder="X19" required="required" />
-        <input type="text" name="X9" placeholder="X9" required="required" />
-		<input type="text" name="X15" placeholder="X15" required="required" />
-		<input type="text" name="X16" placeholder="X16" required="required" />
-    <input type="text" name="X13" placeholder="X13" required="required" />
-    <input type="text" name="X6" placeholder="X6" required="required" />
+    	<input type="text" name="X19" placeholder="first variable" required="required" />
+        <input type="text" name="X9" placeholder="second variable" required="required" />
+		<input type="text" name="X15" placeholder="third variable" required="required" />
+		<input type="text" name="X16" placeholder="fourth variable" required="required" />
+    <input type="text" name="X13" placeholder="fifth variable"  />
+    <input type="text" name="X6" placeholder="sixth variable"  />
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
     </form>
+   <br>
+   <table>
+   <tr>
+        <th>Model</th>
+        <th> accuracy</th>
+        <th>f1_score</th>
+        <th>precision</th>
+        <th>recall</th>
+    </tr>
+
+       {% for key, value in results.items() %}        
+        <tr>
+        <td>{{key}}</td>
+        <td>{{value['accuracy']}}</td>
+        <td>{{value['f1-score']}}</td>
+        <td>{{value['precision']}}</td>
+        <td>{{value['recall']}}</td>
+        
+          </tr>
+      {% endfor %} 
+      </table>
+   <br>
 
    <br>
-   <br>
-   {{ prediction_text }}
  </div>
 </body>
 </html>
