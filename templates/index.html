@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>ML Deployment</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  
+</head>
+<body>
+ <div class="login">
+	<h1>Predict Target Class</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	
+    	<input type="text" name="X19" placeholder="X19" required="required" />
+        <input type="text" name="X9" placeholder="X9" required="required" />
+		<input type="text" name="X15" placeholder="X15" required="required" />
+		<input type="text" name="X16" placeholder="X16" required="required" />
+    <input type="text" name="X13" placeholder="X13" required="required" />
+    <input type="text" name="X6" placeholder="X6" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+ </div>
+</body>
+</html>
